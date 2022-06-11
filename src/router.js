@@ -6,6 +6,7 @@ import AxiosPage from "./pages/AxiosPage.vue";
 import LoginPage from "./pages/LoginPage.vue";
 import CityPage from "./pages/CityPage.vue";
 import CountriesPage from "./pages/CountriesPage.vue";
+import CitiesPage from "./pages/CitiesPage.vue";
 
 export const routes = [
   { path: "/", name: "home", component: HomePage, meta: { isPublic: true } },
@@ -21,6 +22,12 @@ export const routes = [
     path: "/countries",
     name: "countries",
     component: CountriesPage,
+    props: true,
+  },
+  {
+    path: "/country/:countryName",
+    name: "oneCountry",
+    component: CitiesPage,
     props: true,
   },
   { path: "/:path(.*)", component: NotFound, meta: { isPublic: true } },

@@ -9,7 +9,7 @@ const props = defineProps({
 });
 const cityInfo = ref();
 onMounted(async () => {
-  const res = await axios.get("/api/cities/" + props.cityName);
+  const res = await axios.get("/api/city/" + props.cityName);
   cityInfo.value = res.data;
 });
 </script>
@@ -19,7 +19,11 @@ onMounted(async () => {
     <h1>
       {{ cityName }}
     </h1>
-    <div v-if="cityInfo">{{ cityInfo }}</div>
+    <div v-if="cityInfo">
+      <div>Country: {{ cityInfo.countryCode.String }}</div>
+      <div>District: {{ cityInfo.district.String }}</div>
+      <div>Population: {{ cityInfo.population.Int64 }}</div>
+    </div>
     <div v-else>街が見つかりませんでした</div>
   </div>
 </template>
